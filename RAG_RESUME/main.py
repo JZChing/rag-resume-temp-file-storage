@@ -10,16 +10,25 @@ from config import FAISS_INDEX_PATH
 import spacy
 import subprocess
 
-# Set a writable directory for Spacy models
+# 🔹 Force Spacy to use the small model and block `lg`
+os.environ["SPACY_MODEL"] = "en_core_web_sm"
 os.environ["SPACY_DATA"] = os.path.expanduser("~/.local/share/spacy/models/")
 
+# Check if `lg` exists and delete it if found
+lg_path = "/home/adminuser/venv/lib/python3.11/site-packages/en_core_web_lg"
+if os.path.exists(lg_path):
+    print("🛑 Removing en-core-web-lg to prevent errors...")
+    subprocess.run(["rm", "-rf", lg_path])
+
 try:
-    # Load a smaller, pre-installed model
+    # Load the small model
     nlp = spacy.load("en_core_web_sm")
 except OSError:
     print("Downloading 'en_core_web_sm' model...")
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
+
+print("✅ Using 'en_core_web_sm' instead of 'en_core_web-lg'")
 
 os.environ['OPENAI_API_KEY']='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'
 
