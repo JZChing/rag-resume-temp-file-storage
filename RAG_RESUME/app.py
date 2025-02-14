@@ -6,17 +6,6 @@ from main import augment_llm_with_vector_data, run_pipeline
 from config import PDF_INPUT_DIR as input_directory, PDF_OUTPUT_DIR as output_directory
 from config import CSV_FILE, FAISS_INDEX_PATH
 
-import spacy
-from spacy.cli import download
-
-# Check if the model is already installed
-try:
-    nlp = spacy.load("en_core_web_sm")  # or "en_core_web_lg" if you prefer
-except OSError:
-    # If not installed, download it
-    download("en_core_web_sm")  # or "en_core_web_lg"
-    nlp = spacy.load("en_core_web_sm")  # or "en_core_web_lg"
-
 st.set_page_config(page_title="Candidate Matching Chatbot", page_icon="🤖", layout="wide")
 
 # 🔹 Custom CSS to Add Sidebar Border
