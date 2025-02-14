@@ -15,4 +15,4 @@ langchain-openai
 faiss-cpu
 openai
 tiktoken
-en-core-web-sm==3.8.0
+
