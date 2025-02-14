@@ -1,0 +1,17 @@
+spacy
+streamlit
+presidio-analyzer
+presidio-anonymizer
+faker
+pdfplumber
+pdf2image
+pytesseract
+fpdf
+pandas
+numpy
+langchain
+langchain-community
+langchain-openai
+faiss-cpu
+openai
+tiktoken
