@@ -1,0 +1,32 @@
+# Streamlit app
+streamlit
+
+# PDF processing
+pdfplumber
+fpdf
+pdf2image
+pytesseract
+Pillow  # Required for pdf2image
+
+# Data processing
+pandas
+numpy
+uuid
+
+# AI & Machine Learning
+langchain
+openai
+langchain-openai
+faiss-cpu  # FAISS for vector search
+sentence-transformers  # Embedding models for FAISS
+
+# Text anonymization
+presidio-analyzer
+presidio-anonymizer
+faker  # Generate fake replacement data
+
+# Web requests
+requests
+
+# Multi-threading support
+concurrent.futures
