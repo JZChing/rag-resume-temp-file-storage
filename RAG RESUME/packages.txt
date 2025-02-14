@@ -1,0 +1,2 @@
+tesseract-ocr  # Required for OCR
+poppler-utils  # Required for pdf2image (if needed)
