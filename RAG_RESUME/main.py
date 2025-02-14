@@ -7,6 +7,20 @@ import os
 from convertpdf import process_uploaded_pdfs
 from config import FAISS_INDEX_PATH
 
+import spacy
+import subprocess
+
+# Set a writable directory for Spacy models
+os.environ["SPACY_DATA"] = os.path.expanduser("~/.local/share/spacy/models/")
+
+try:
+    # Load a smaller, pre-installed model
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("Downloading 'en_core_web_sm' model...")
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
 os.environ['OPENAI_API_KEY']='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'
 
 def augment_llm_with_vector_data(query, index_path=FAISS_INDEX_PATH, mapping_file="mapping.json"):
