@@ -6,7 +6,20 @@ from main import augment_llm_with_vector_data, run_pipeline
 from config import PDF_INPUT_DIR as input_directory, PDF_OUTPUT_DIR as output_directory
 from config import CSV_FILE, FAISS_INDEX_PATH
 
+import spacy
+import subprocess
 
+# Set SPACY environment to use user directory (not the system)
+os.environ["SPACY_DATA"] = os.path.expanduser("~/.local/share/spacy/models/")
+
+# Check if 'en_core_web_lg' is installed
+try:
+    nlp = spacy.load("en_core_web_lg")
+except OSError:
+    print("Downloading 'en_core_web_lg' model...")
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_lg", "--target", os.environ["SPACY_DATA"]])
+    nlp = spacy.load("en_core_web_lg")
+    
 st.set_page_config(page_title="Candidate Matching Chatbot", page_icon="🤖", layout="wide")
 
 # 🔹 Custom CSS to Add Sidebar Border
