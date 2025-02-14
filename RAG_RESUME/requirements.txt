@@ -1,4 +1,5 @@
 spacy
+streamlit
 presidio-analyzer
 presidio-anonymizer
 faker
